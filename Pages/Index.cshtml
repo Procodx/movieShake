@@ -1,0 +1,46 @@
+﻿@page
+@using Movieshake_Api.Pages.Shared
+@model Movieshake_Api.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class="text-center">
+    <h2 class=" text-success">Movie<span class="text-danger display-5 fw-4">S</span>hake</h2>
+    <form>
+        <input type="search" name="SearchMovie" />
+        <button type="submit" class="bg-success text-black rounded-2 border-none px-3 py-1">Search</button>
+    </form>
+</div>
+
+@if (Model.movies != null )
+{
+    <div class="container my-5 mx-auto d-flex flex-wrap">
+        @foreach (var movie in Model.movies)
+        {
+            <div class="container my-2 col-4 flex-wrap">
+                <a href="/FullMovieInfo/@movie.imdbID" class="card-link text-decoration-none">
+                    <img src="@movie.Poster" class="img-fluid " alt="@movie.Title" />
+                    <h5 class="text-light">@movie.Title</h5>
+                    <p class="text-secondary">Year: @movie.Year</p>
+                    <p class="text-secondary">Type: @movie.Type</p>
+                </a>
+            </div>
+            
+        }
+    </div>
+}
+else
+{
+    <div class="container py-5 my-5 mx-auto d-flex justify-content-center">
+        <h2 class="text-danger fw-bold text-center">Could Not Find Movie</h2>
+    </div>
+}
+
+
+
+
+
+@*deleted backup just incase my default movie refuse to show again*@
+@*&& Model.movies.Count > *@

@@ -1,0 +1,32 @@
+﻿@page "{ImdbID}"
+@model Movieshake_Api.Pages.FullMovieInfoModel
+@{
+    ViewData["Title"] = "Movie Info";
+}
+
+@if (Model.MovieResponse != null)
+{
+    <div class="flex-md-row gap-3 d-flex flex-column-reverse mx-3 align-items-center">
+        <div class="col-md-7 col-lg-6 text-light d-flex flex-column">
+            <p><strong>Title:</strong> <span class="h4">@Model.MovieResponse.Title</span></p>
+            <p><strong>Released:</strong> @Model.MovieResponse.Released</p>
+            <p><strong>Genre:</strong> @Model.MovieResponse.Genre</p>
+            <p><strong>Languages:</strong> @Model.MovieResponse.language</p>
+            <p><strong>Actors:</strong> @Model.MovieResponse.Actors</p>
+            <p><strong>Grouped as:</strong> @Model.MovieResponse.Type</p>
+            <p><strong>No of Seasons:</strong> @Model.MovieResponse.totalSeasons</p>
+            <p class="col-md-9"><strong>Plot:</strong> @Model.MovieResponse.Plot</p>
+            <div class="d-flex justify-content-center justify-content-md-start">
+                <button class="btn btn-lg  btn-success text-dark fw-bold text-center p-2 my-2" href="www.w3schools.com">Download</button>
+            </div>
+        </div>
+        <div class="col-md-5 d-flex justify-content-center">
+            <img src="@Model.MovieResponse.Poster" alt="Movie Poster" class="img-fluid">
+        </div>
+    </div>
+    
+}
+else
+{
+    <h4 class="text-danger display-4 align-self-center d-flex">Movie not found</h4>
+}
